@@ -30,7 +30,7 @@ import {
 
 // matoto analytics
 // import React, { useEffect } from "react";
-import App from "next/app";
+// import App from "next/app";
 
 import { init } from "@socialgouv/matomo-next";
 
