@@ -29,8 +29,8 @@ import {
 } from '@/lib/config'
 
 // matoto analytics
-// import React, { useEffect } from "react";
-// import App from "next/app";
+import React, { useEffect } from "react";
+import App from "next/app";
 
 import { init } from "@socialgouv/matomo-next";
 
