@@ -29,14 +29,10 @@ import {
 } from '@/lib/config'
 
 // matoto analytics
-// import React, { useEffect } from "react";
-// import App from "next/app";
+import { init } from "@socialgouv/matomo-next";
 
-import * as matomo from "@socialgouv/matomo-next";
-
-const MATOMO_URL = "https://matomo.evilgaoshu.com";
-const MATOMO_SITE_ID = "2";
-
+const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
+const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
 
 if (!isServer) {
   bootstrap()
@@ -46,11 +42,9 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   React.useEffect(() => {
-    function onRouteChangeComplete() {
-      if (MATOMO_SITE_ID) {
-        matomo.init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
-      }
+    init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
 
+    function onRouteChangeComplete() {
       if (fathomId) {
         Fathom.trackPageview()
       }
