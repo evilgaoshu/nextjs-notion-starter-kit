@@ -28,26 +28,14 @@ import {
   posthogId
 } from '@/lib/config'
 
-import Script from "next/script";
-<Script
-  id="matomo-analytics"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: `
-        var _paq = window._paq = window._paq || [];
-        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-          var u="//matomo.evilgaoshu.com/";
-          _paq.push(['setTrackerUrl', u+'matomo.php']);
-          _paq.push(['setSiteId', '2']);
-          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-          g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-        })();
-    `,
-  }}
-/>
+// matoto analytics
+// import React, { useEffect } from "react";
+// import App from "next/app";
+
+import { init } from "@socialgouv/matomo-next";
+
+const MATOMO_URL = "https://matomo.evilgaoshu.com";
+const MATOMO_SITE_ID = 2;
 
 
 if (!isServer) {
@@ -59,6 +47,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
   React.useEffect(() => {
     function onRouteChangeComplete() {
+      init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
+
       if (fathomId) {
         Fathom.trackPageview()
       }
