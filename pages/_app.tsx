@@ -32,7 +32,7 @@ import {
 // import React, { useEffect } from "react";
 // import App from "next/app";
 
-import { init } from "@socialgouv/matomo-next";
+// import { init } from "@socialgouv/matomo-next";
 
 const MATOMO_URL = "https://matomo.evilgaoshu.com";
 const MATOMO_SITE_ID = 2;
