@@ -35,7 +35,7 @@ import {
 import { init } from "@socialgouv/matomo-next";
 
 const MATOMO_URL = "https://matomo.evilgaoshu.com";
-const MATOMO_SITE_ID = 2;
+const MATOMO_SITE_ID = "2";
 
 
 if (!isServer) {
