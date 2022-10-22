@@ -32,7 +32,7 @@ import {
 // import React, { useEffect } from "react";
 // import App from "next/app";
 
-import { init } from "@socialgouv/matomo-next";
+import * as matomo from "@socialgouv/matomo-next";
 
 const MATOMO_URL = "https://matomo.evilgaoshu.com";
 const MATOMO_SITE_ID = "2";
@@ -47,7 +47,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   React.useEffect(() => {
     function onRouteChangeComplete() {
-      init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
+      if (MATOMO_SITE_ID) {
+        matomo.init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
+      }
 
       if (fathomId) {
         Fathom.trackPageview()
